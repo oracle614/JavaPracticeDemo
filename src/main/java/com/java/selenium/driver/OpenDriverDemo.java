@@ -1,4 +1,4 @@
-package com.java.selenium;
+package com.java.selenium.driver;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

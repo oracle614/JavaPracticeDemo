@@ -1,4 +1,4 @@
-package com.java.selenium;
+package com.java.selenium.findelements;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,12 +26,11 @@ public class FindElementByXpath {
 		// 创建驱动实例
 		WebDriver driver = new ChromeDriver();
 		// 打开浏览器,最大化，并设置隐式等待时间
-		driver.navigate().to(baseurl);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.navigate().to(baseurl);
 		// 查找元素1
-		WebElement el = driver.findElement(By
-				.cssSelector("	")); // 表示获取的元素以displayed-class结尾的class属性
+		WebElement el = driver.findElement(By.cssSelector("	")); // 表示获取的元素以displayed-class结尾的class属性
 		// 输入内容1
 		el.sendKeys("cssSelector1");
 
@@ -47,7 +46,7 @@ public class FindElementByXpath {
 		// 查找页面元素2
 
 		WebElement le = driver.findElement(By
-				.cssSelector("input[class*='displayed-class']")); //  表示获取的元素包含displayed-class结尾的class属性
+				.cssSelector("input[class*='displayed-class']")); // 表示获取的元素包含displayed-class结尾的class属性
 		// 输入内容2
 		le.sendKeys("cssSelector2");
 		// 关闭浏览器

@@ -1,4 +1,4 @@
-package com.java.selenium;
+package com.java.selenium.findelements;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,9 +27,9 @@ public class FindElementByLinkText {
 		// 创建驱动实例
 		WebDriver driver = new ChromeDriver();
 		// 打开浏览器,最大化，并设置隐式等待时间
-		driver.navigate().to(baseurl);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.navigate().to(baseurl);
 		
 //		findElementBylinkText定位元素，文本是在a标签内才可使用该方法
 		driver.findElement(By.linkText("Mail")).click();
