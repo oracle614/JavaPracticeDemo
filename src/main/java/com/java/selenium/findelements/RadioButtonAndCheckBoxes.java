@@ -50,12 +50,12 @@ public class RadioButtonAndCheckBoxes {
 		El2.click();
 
 		// 单选按钮的单个元素操作
-		WebElement E1 = driver.findElement(By.id("bmwcheck"));
-		E1.click();
+		// WebElement E1 = driver.findElement(By.id("bmwcheck"));
+		// E1.click();
 
 		// 复选框按钮的单个元素操作，最后选择的所有
-		WebElement E2 = driver.findElement(By.id("benzcheck"));
-		E2.click();
+		// WebElement E2 = driver.findElement(By.id("benzcheck"));
+		// E2.click();
 
 		// 多个元素放在集合里，
 		// input里面的通用属性；注意，如果同一个页面都有同一个type属性，那么会把所有匹配的复选按钮放在同一个集合里，建议使用多个属性来定位：
@@ -63,27 +63,32 @@ public class RadioButtonAndCheckBoxes {
 		List<WebElement> els = driver.findElements(By
 				.xpath("//input[@type='checkbox']"));
 		// 操作集合里的元素
-		// for (WebElement El : els) {
-		// El.click();
-		// // 判断元素是否选中
-		// System.out.println("元素是否被选中:" + El.isSelected());
-		// }
-
-		boolean isCheck = false;
-		for (int i = 0; i < els.size(); i++) {
-			isCheck = els.get(i).isSelected();
-			if (!isCheck) {
-				els.get(i).click();
-				System.out.println("元素是否被选中:" + els.get(i).isSelected());
+		for (WebElement El : els) {
+			System.out.println("元素是否被选中:" + El.isSelected());
+			// 加入一行条件，获取元素的相关属性，包含某个字符串
+			if (El.getAttribute("value").contains("bmw")) {
+				El.click();
+				break;
 			}
+			// 判断元素是否选中
+
 		}
+
+		// boolean isCheck = false;
+		// for (int i = 0; i < els.size(); i++) {
+		// isCheck = els.get(i).isSelected();
+		// if (!isCheck) {
+		// els.get(i).click();
+		// System.out.println("元素是否被选中:" + els.get(i).isSelected());
+		// }
+		// }
 	}
 
 	@After
 	public void end() throws Exception {
 
 		Thread.sleep(2000);
-		// driver.close();
+		driver.close();
 	}
 
 }

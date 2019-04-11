@@ -1,7 +1,6 @@
 package com.java.selenium.encmethod;
 
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,76 +25,105 @@ public class EncapsulationGeneralMethod {
 
 	public WebElement getElement(String locator, String type) {
 		type = type.toLowerCase();
-		if (type.equals("id")) {
-			System.out.println("用id查找元素" + locator);
+		List<WebElement> flag = isElementPresent(locator, type);
+		if (type.equals("id") && flag.size() == 1) {
+			System.out.println("用id方法成功找到<" + flag.size() + ">个元素");
 			return this.driver.findElement(By.id(locator));
-		} else if (type.equals("xpath")) {
-			System.out.println("用xpath查找元素" + locator);
+		} else if (type.equals("xpath") && flag.size() == 1) {
+			System.out.println("用xpath方法成功找到<" + flag.size() + ">个元素");
 			return this.driver.findElement(By.xpath(locator));
-		} else if (type.equals("name")) {
-			System.out.println("用name查找元素: " + locator);
+		} else if (type.equals("name") && flag.size() == 1) {
+			System.out.println("用name方法成功找到<" + flag.size() + ">个元素");
 			return this.driver.findElement(By.name(locator));
-		} else if (type.equals("css")) {
-			System.out.println("用css查找元素: " + locator);
+		} else if (type.equals("css") && flag.size() == 1) {
+			System.out.println("用css方法成功找到<" + flag.size() + ">个元素");
 			return this.driver.findElement(By.cssSelector(locator));
-		} else if (type.equals("classname")) {
-			System.out.println("用classname查找元素: " + locator);
+		} else if (type.equals("classname") && flag.size() == 1) {
+			System.out.println("用classname方法成功找到<" + flag.size() + ">个元素");
 			return this.driver.findElement(By.className(locator));
-		} else if (type.equals("tagname")) {
-			System.out.println("用tagname查找元素: " + locator);
+		} else if (type.equals("tagname") && flag.size() == 1) {
+			System.out.println("用tagname方法成功找到<" + flag.size() + ">个元素");
 			return this.driver.findElement(By.tagName(locator));
-		} else if (type.equals("linktext")) {
-			System.out.println("用linktext查找元素: " + locator);
+		} else if (type.equals("linktext") && flag.size() == 1) {
+			System.out.println("用linktext方法成功找到<" + flag.size() + ">个元素");
 			return this.driver.findElement(By.linkText(locator));
-		} else if (type.equals("partiallinktext")) {
-			System.out.println("用partiallinktext查找元素: " + locator);
+		} else if (type.equals("partiallinktext") && flag.size() == 1) {
+			System.out
+					.println("用partiallinktext方法成功找到<" + flag.size() + ">个元素");
 			return this.driver.findElement(By.partialLinkText(locator));
+		} else if (flag.size() > 1) {
+			System.out.println("定位元素<" + locator + ">匹配" + flag.size() + "个!");
+			return null;
 		} else {
-			System.out.println("定位的路径不支持");
+			System.out.println("定位元素<" + locator + ">不正确匹配0个!");
 			return null;
 		}
+
 	}
 
 	public List<WebElement> getElementList(String locator, String type) {
 		type = type.toLowerCase();
-		if (type.equals("id")) {
-			System.out.println("用id查找元素" + locator);
-			return this.driver.findElements(By.id(locator));
-		} else if (type.equals("xpath")) {
-			System.out.println("用xpath查找元素" + locator);
-			return this.driver.findElements(By.xpath(locator));
-		} else if (type.equals("name")) {
-			System.out.println("用name查找元素: " + locator);
-			return this.driver.findElements(By.name(locator));
-		} else if (type.equals("css")) {
-			System.out.println("用css查找元素: " + locator);
-			return this.driver.findElements(By.cssSelector(locator));
-		} else if (type.equals("classname")) {
-			System.out.println("用classname查找元素: " + locator);
-			return this.driver.findElements(By.className(locator));
-		} else if (type.equals("tagname")) {
-			System.out.println("用tagname查找元素: " + locator);
-			return this.driver.findElements(By.tagName(locator));
-		} else if (type.equals("linktext")) {
-			System.out.println("用linktext查找元素: " + locator);
-			return this.driver.findElements(By.linkText(locator));
-		} else if (type.equals("partiallinktext")) {
-			System.out.println("用partiallinktext查找元素: " + locator);
-			return this.driver.findElements(By.partialLinkText(locator));
+		List<WebElement> flag = isElementPresent(locator, type);
+		if (type.equals("id") && flag.size() > 1) {
+			System.out.println("id方法成功找到<" + flag.size() + ">个元素");
+			return flag;
+		} else if (type.equals("xpath") && flag.size() > 1) {
+			System.out.println("xpath方法成功找到<" + flag.size() + ">个元素");
+			return flag;
+		} else if (type.equals("name") && flag.size() > 1) {
+			System.out.println("name方法成功找到<" + flag.size() + ">个元素");
+			return flag;
+		} else if (type.equals("css") && flag.size() > 1) {
+			System.out.println("css方法成功找到<" + flag.size() + ">个元素");
+			return flag;
+		} else if (type.equals("classname") && flag.size() > 1) {
+			System.out.println("classname方法成功找到<" + flag.size() + ">个元素");
+			return flag;
+		} else if (type.equals("tagname") && flag.size() > 1) {
+			System.out.println("tagname方法成功找到<" + flag.size() + ">个元素");
+			return flag;
+		} else if (type.equals("linktext") && flag.size() > 1) {
+			System.out.println("linktext方法成功找到<" + flag.size() + ">个元素");
+			return flag;
+		} else if (type.equals("partiallinktext") && flag.size() > 1) {
+			System.out.println("partiallinktext方法成功找到<" + flag.size() + ">个元素");
+			return flag;
 		} else {
-			System.out.println("定位的路径不支持");
+			System.out.println("定位元素<" + locator + ">不正确或匹配<" + flag.size()
+					+ ">个!");
 			return null;
 		}
 	}
 
-	public boolean isElementPresent(String locator, String type) {
-		List<WebElement> elementList = getElementList(locator, type);
-		int size = elementList.size();
-		if (size > 0) {
-			return true;
+	public List<WebElement> isElementPresent(String locator, String type) {
+		type = type.toLowerCase();
+		if (type.equals("name")) {
+			System.out.println("name方法:查找元素<" + locator + ">是否存在?");
+			return this.driver.findElements(By.name(locator));
+		} else if (type.equals("id")) {
+			System.out.println("id方法:查找元素<" + locator + ">是否存在?");
+			return this.driver.findElements(By.id(locator));
+		} else if (type.equals("xpath")) {
+			System.out.println("xpath方法:查找元素<" + locator + ">是否存在?");
+			return this.driver.findElements(By.xpath(locator));
+		} else if (type.equals("css")) {
+			System.out.println("css方法:查找元素<" + locator + ">是否存在?");
+			return this.driver.findElements(By.cssSelector(locator));
+		} else if (type.equals("classname")) {
+			System.out.println("classname方法:查找元素<" + locator + ">是否存在?");
+			return this.driver.findElements(By.className(locator));
+		} else if (type.equals("linktext")) {
+			System.out.println("linktext方法:查找元素<" + locator + ">是否存在?");
+			return this.driver.findElements(By.linkText(locator));
+		} else if (type.equals("partiallinktext")) {
+			System.out.println("partiallinktext方法:查找元素<" + locator + ">是否存在?");
+			return this.driver.findElements(By.partialLinkText(locator));
+		} else if (type.equals("tagname")) {
+			System.out.println("tagname方法:查找元素<" + locator + ">是否存在?");
+			return this.driver.findElements(By.tagName(locator));
 		} else {
-			return false;
+			System.out.println("查找元素的方法" + type + "不存在!");
+			return null;
 		}
 	}
-
 }
