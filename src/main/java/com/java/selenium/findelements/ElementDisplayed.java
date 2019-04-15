@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import com.java.seleniu.constant.Constants;
+import com.java.selenium.constant.Constants;
 
 /*
  * 隐藏元素的操作方法
@@ -44,7 +44,7 @@ public class ElementDisplayed {
 		WebElement el1=driver.findElement(By.id("displayed-text"));
 		boolean isDisplay1=el1.isDisplayed();
 		System.out.println("判断输入框是否显示："+isDisplay1);
-		
+
 		driver.findElement(By.id("show-textbox")).click();
 		System.out.println("点击隐藏按钮，元素被显示");
 		WebElement el2=driver.findElement(By.id("displayed-text"));

@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import com.java.seleniu.constant.Constants;
+import com.java.selenium.constant.Constants;
 import com.thoughtworks.selenium.webdriven.commands.GetText;
 
 /*
